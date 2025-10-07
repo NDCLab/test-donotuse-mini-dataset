@@ -9,8 +9,7 @@
 # Configuration variables
 SINGULARITY_VERSION="3.8.2"
 HM_CONTAINER="/home/data/NDClab/tools/containers/hallMonitor2/hm2_0-5-2.sif"
-DATASET="/home/data/NDClab/datasets/test-donotuse-mini-dataset"
-EXTRA_FLAGS="--child-data"
+DATASET=""
 
 if [ -z "$DATASET" ]; then
     echo "Please specify a dataset in hallMonitor2.sub"
@@ -23,5 +22,6 @@ if [ ! -f "$HM_CONTAINER" ]; then
 fi
 
 module load "singularity-$SINGULARITY_VERSION"
+
 # The command to run HallMonitor is below. Please see the script's documentation for additional options.
-singularity run "$HM_CONTAINER" "$DATASET" --no-color --suppress-missing-pending-qa $EXTRA_FLAGS
+singularity run "$HM_CONTAINER" "$DATASET" --no-color
